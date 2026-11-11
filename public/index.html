@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>H3 Live Director</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>H3 Live Director</h1>
+  <span id="badge"></span>
+  <select id="sessionPick"></select>
+  <button id="newSession">New</button>
+  <input id="sessionName" placeholder="Session name">
+  <button id="importBtn">Import…</button><input id="importFile" type="file" accept=".gz,.tgz" hidden>
+</header>
+
+<main>
+  <section id="director">
+    <h2>Direct</h2>
+    <button id="mic" class="big">🎙 Start talking</button>
+    <div id="live" aria-live="polite"><span id="final"></span><span id="interim"></span></div>
+    <div class="row">
+      <input id="typed" placeholder="…or type a shot and press Enter">
+      <button id="sendNow">Send now</button>
+    </div>
+    <label>Pause before sending (s) <input id="pause" type="number" min="0.5" max="6" step="0.1" value="1.6"></label>
+    <label><input id="continuity" type="checkbox" checked> Continue from previous clip's last frame (i2v)</label>
+    <label>Style prefix <input id="style" placeholder="e.g. cinematic, 35mm, my-lora-trigger"></label>
+    <div class="row">
+      <label>W <input id="w" type="number" step="16"></label>
+      <label>H <input id="h" type="number" step="16"></label>
+      <label>Frames <input id="frames" type="number" step="8"></label>
+    </div>
+    <p class="hint" id="speechHint"></p>
+  </section>
+
+  <section id="edit">
+    <div class="row">
+      <h2>Cut</h2>
+      <button id="playCut">▶ Play cut</button>
+      <label><input id="follow" type="checkbox" checked> Follow live</label>
+      <span class="grow"></span>
+      <button id="exportBtn">⬇ Download cut (MP4)</button>
+      <button id="upscaleBtn">✨ Upscale in Topaz</button>
+      <button id="archiveBtn">⬇ Session archive</button>
+    </div>
+    <video id="player" controls playsinline></video>
+    <div id="status"></div>
+    <div id="timeline"></div>
+  </section>
+</main>
+<script src="app.js" type="module"></script>
+</body>
+</html>

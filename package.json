@@ -1,0 +1,11 @@
+{
+  "name": "h3-live-director",
+  "version": "0.1.0",
+  "description": "Talk -> MiniMax H3 (ComfyUI) generates clips live -> re-edit -> export / Topaz upscale",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/e2e.test.js"
+  },
+  "engines": { "node": ">=20" }
+}

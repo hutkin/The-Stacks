@@ -1,0 +1,32 @@
+{
+  "comfyUrl": "http://127.0.0.1:8188",
+  "defaults": { "width": 768, "height": 432, "frames": 121, "fps": 24, "stylePrefix": "" },
+  "workflows": {
+    "t2v": {
+      "file": "workflows/h3_t2v.json",
+      "map": {
+        "prompt": ["6", "text"],
+        "seed": ["3", "seed"],
+        "width": ["10", "width"],
+        "height": ["10", "height"],
+        "frames": ["10", "length"]
+      }
+    },
+    "i2v": {
+      "file": "workflows/h3_i2v.json",
+      "map": {
+        "prompt": ["6", "text"],
+        "seed": ["3", "seed"],
+        "image": ["12", "image"],
+        "width": ["10", "width"],
+        "height": ["10", "height"],
+        "frames": ["10", "length"]
+      }
+    }
+  },
+  "topaz": {
+    "ffmpeg": "/Applications/Topaz Video AI.app/Contents/MacOS/ffmpeg",
+    "filter": "tvai_up=model=iris-3:scale=2",
+    "videoArgs": ["-c:v", "libx265", "-crf", "16", "-pix_fmt", "yuv420p10le"]
+  }
+}
