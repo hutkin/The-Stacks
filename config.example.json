@@ -1,5 +1,6 @@
 {
-  "comfyUrl": "http://127.0.0.1:8188",
+  "comfyUrl": "https://cloud.comfy.org",
+  "apiPrefix": "/api",
   "defaults": { "width": 768, "height": 432, "frames": 121, "fps": 24, "stylePrefix": "" },
   "workflows": {
     "t2v": {

@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8787;
 const PUBLIC = path.join(path.dirname(fileURLToPath(import.meta.url)), 'public');
 const cfg = loadConfig();
 const MOCK = !cfg;
-const comfy = cfg ? new ComfyClient(cfg.comfyUrl) : null;
+const comfy = cfg ? new ComfyClient(cfg.comfyUrl, { apiKey: process.env.COMFY_API_KEY || cfg.apiKey, apiPrefix: cfg.apiPrefix || '' }) : null;
 const jobs = [];
 let working = false;
 

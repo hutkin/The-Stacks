@@ -9,6 +9,10 @@ npm test             # end-to-end test in mock mode
 
 With no `config.json` it runs in **MOCK mode** (test-pattern clips) so you can try the whole flow without a GPU.
 
+## Connect Comfy Cloud
+Set `comfyUrl` to `https://cloud.comfy.org` and `apiPrefix` to `/api`, and provide your key as the `COMFY_API_KEY` env var (never commit it). If the server runs in a Claude Code cloud session, add `cloud.comfy.org` to the environment's allowed network domains and `COMFY_API_KEY` to its secrets. For local ComfyUI use `http://127.0.0.1:8188` and `apiPrefix: ""`.
+The Cloud paths/headers are modelled on ComfyUI's API and **not yet verified against Comfy's docs or a live account** — first real run may need small tweaks in `lib/comfy.js`. Workflows must only use nodes/models available on Cloud.
+
 ## Connect ComfyUI
 1. In ComfyUI, build your H3 text-to-video and image-to-video workflows (with your LoRAs / training adapter / distill LoRA), end them in a video-saving node, and use **Save (API Format)**. Put the files in `workflows/`.
 2. `cp config.example.json config.json` and set `comfyUrl` plus each workflow's `map` — `[nodeId, inputName]` for `prompt`, `seed`, `width`, `height`, `frames` (and `image` for i2v). Node IDs are the keys in your API JSON.
